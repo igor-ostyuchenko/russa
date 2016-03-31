@@ -1,0 +1,32 @@
+<link rel="stylesheet" type="text/css" href="css/offline_pages.css" />
+
+<div id="offline_pages">
+  <div class="top-menu">
+    <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+    <div class="title">
+        <span>
+            {{ 'Оффлайн-хранилище' | translate }}
+        </span>
+      <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+    </div>
+  </div>
+
+  <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+    <div class="item" ng-repeat="item in selection" ng-class="{'removed': item.removed}" >
+        <img ng-src="{{item.url}}" style="margin-top: -{{ getTitleHeight() }}px;" ng-click="showFullScreen(item)"/>
+        <div class="title">
+            {{ item.title }}
+        </div>
+        <div class="remove-btn" ng-click="removeItem(item)">
+            <i class="fa fa-trash"></i>
+        </div>
+    </div>
+  </div>
+
+</div>
+<div class="fullScreenImage">
+    <div class="close-btn" ng-click="closeFullScreen();">
+        <i class="fa fa-times"></i>
+    </div>
+    <img ng-src="{{ fullScreenImage.url }}"/>
+</div>

@@ -1,0 +1,64 @@
+#faq {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  text-shadow: none;
+  font-family: 'Open Sans';
+
+  //= top_menu.scss
+
+  .selection {
+    overflow-y: auto;
+    position: relative;
+
+    padding-bottom: 70px;
+    box-sizing: border-box;
+    text-align: left;
+
+    .item {
+      display: block;
+      border-bottom: 1px solid #ddd;
+
+      .title {
+        display: block;
+        padding: 15px;
+
+        span {
+          display: inline-block;
+          width: 85%;
+        }
+
+        i {
+          float: right;
+          width: 30px;
+          height: 30px;
+          text-align: center;
+          line-height: 30px;
+        }
+        animation: rotateFromRight 0.3s both ease-out;
+      }
+    }
+
+    .content {
+      display: none;
+      padding: 15px;
+      border-top: 1px solid #ddd;
+      overflow: hidden;
+
+    }
+
+    &.unfolded {
+
+      .title i {
+        animation: rotateToRight 0.3s both ease-out;
+        -webkit-animation: rotateToRight 0.3s both ease-out;
+        -o-animation: rotateToRight 0.3s both ease-out;
+      }
+
+    }
+  }
+}
+

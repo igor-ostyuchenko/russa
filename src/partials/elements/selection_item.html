@@ -1,0 +1,29 @@
+<div class="item"
+     ng-class="{'active': item.active}"
+     ng-click="setActive(item)"
+     ng-swipe-right="touchEvent(item, $event)"
+     ng-init="getImageByUrl(item.img.url, '.view')"
+     style="background-image: url('{{ ImageCache[item.img.url] }}?x={{ randomNum }}');"
+     >
+    <div class="image-preloader" ng-if="!(ImageCache[item.img.url]) || LoadingList[item.img.url]"></div>
+    <div class="datestamp" ng-if="selectionType == 'event'">
+        {{ item.dateStr }}
+    </div>
+    <div class="paststamp" ng-if="selectionType == 'event'" ng-show="item.past">
+        {{ 'Завершено' | translate }}
+    </div>
+    <div class="length" ng-if="selectionType == 'route' && item.length" >
+        <span>{{ item.length }}{{ 'м' | translate }}</span>
+    </div>
+
+  <div class="info-panel">
+    <div class="title">
+      {{ item.name[lang] }}
+    </div>
+    <div class="mark" ng-class="{'favorite': checkFavorite(item)}">
+      <i class="fa fa-heart"></i>
+      {{ item.likes }}
+    </div>
+  </div>
+
+</div>

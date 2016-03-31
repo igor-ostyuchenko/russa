@@ -1,0 +1,41 @@
+<div class="entity-filter-blend" onclick="showFilter()"></div>
+<div class="entity-filter">
+    <div class="order" ng-if="!isMap">
+        <div class="btn" ng-class="{'checked': entityFilter.order.likes}" ng-click="updateEntFilter('likes');">
+            {{ 'По популярности' | translate }}
+        </div>
+        <div class="btn" ng-class="{'checked': entityFilter.order.byLength}" ng-if="entityFilter.type=='route'" ng-click="updateEntFilter('byLength');">
+            {{ 'По протяженности' | translate }}
+        </div>
+        <div class="btn" ng-class="{'checked': entityFilter.order.byDate}" ng-if="entityFilter.type=='event'" ng-click="updateEntFilter('byDate');">
+            {{ 'По дате' | translate }}
+        </div>
+    </div>
+
+    <div class="order" ng-if="isMap">
+        <div class="btn" ng-class="{'checked': entityFilter.order.objects}"
+             ng-click="entityFilter.order.objects = !entityFilter.order.objects; updateEntFilter();">
+            {{ "Объекты" | translate }}
+        </div>
+        <div class="btn" ng-class="{'checked': entityFilter.order.events}"
+             ng-click="entityFilter.order.events = !entityFilter.order.events; updateEntFilter();">
+            {{ "События" | translate }}
+        </div>
+        <div class="btn" ng-class="{'checked': entityFilter.order.objects && entityFilter.order.events}"
+             ng-click="entityFilter.order.objects = !entityFilter.order.objects;entityFilter.order.events = !entityFilter.order.events; updateEntFilter();">
+            {{ "Все" | translate }}
+        </div>
+
+    </div>
+
+
+    <div class="category-list">
+        <div class="category" ng-repeat="item in entityFilter.categoryList track by $index">
+            <label for="check_{{ $index }}">
+                <input type="checkbox" ng-model="item.checked" id="check_{{$index}}" ng-change="updateEntFilter()"/>
+                {{ item.name[lang] }}
+            </label>
+        </div>
+    </div>
+
+</div>

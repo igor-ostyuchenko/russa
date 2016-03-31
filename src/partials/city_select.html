@@ -1,0 +1,78 @@
+<link rel="stylesheet" type="text/css" href="css/city-select.css" />
+
+
+<div class="select-city">
+    <div class="title">
+        <span>
+            {{ 'Выберите город' | translate }}
+        </span>
+    </div>
+
+    <div class="loader" ng-class="{'hide': loaded}" >
+        <img src="img/footbal_preloader.GIF"/>
+        <div ng-if="noData">
+            {{ 'Необходимо подключение к сети интернет' | translate }}
+        </div>
+    </div>
+
+    <div class="city-wrapper">
+        <div class="owl-carousel">
+            <div ng-repeat="city in cities" render-message="cityRenderFinished" data-city="{{city.id}}">
+                <div class="image-preloader" ng-if="!(ImageCache[city.img.url]) || LoadingList[item.img.url]" style="top: 25%;"></div>
+                <img class="city-image"
+                     ng-src="{{ ImageCache[city.img.url] }}"
+                     ng-click="citySelect()"
+                     style="height:{{ ::getImageHeight() }}px;"/>
+                <div class="title" style="height: {{ ::getTitleHeight() }}px;">
+                    <span>
+                        {{ ::city.name[lang] }}
+                    </span>
+                </div>
+
+                <div class="matches" ng-if="city.loaded" style="height: {{ ::getMatchesHeight() }}px;">
+                    <div class="match" ng-repeat="match in city.games" style="height: {{ ::getMatchesHeight() }}px;">
+                        <div class="sides">
+                            <div class="wrap">
+                                <div class="side">
+                                    <div class="flag flag-{{ match.sides[0].flag }}"></div>
+                                    <div class="title">
+                                        {{ match.sides[0][lang] }}
+                                    </div>
+                                </div>
+                                <div class="divider" ng-if=" match.sides.length > 0">-</div>
+                                <div class="side">
+                                    <div class="flag flag-{{ match.sides[1].flag }}"></div>
+                                    <div class="title">
+                                        {{ match.sides[1][lang] }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <div class="wrap">
+                                <div class="row">
+                                    <span>
+                                        <i class="fa fa-calendar"></i>
+                                        {{ match.date[lang] }}
+                                     </span>
+                                </div>
+                                <div class="row">
+                                    <span>
+                                        <i class="fa fa-map-marker"></i>
+                                        {{ match.place[lang] }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="select-button" ng-click="citySelect()" ng-if="!noData">
+        {{ 'Выбрать гид' | translate }}
+    </div>
+
+</div>

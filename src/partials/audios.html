@@ -1,0 +1,33 @@
+<link rel="stylesheet" type="text/css" href="css/audios.css" />
+
+<div id="audios">
+    <div class="top-menu">
+        <div class="title">
+        <span>
+            {{ 'Аудиогиды' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <div class="item"
+             ng-class="{'active': item.active}"
+             ng-click="setActive(item)"
+             style="background-image: url('{{ item.img.url || '../img/msc.jpg'}}');"
+             ng-repeat="item in selection">
+
+                <div class="info-panel">
+                    <div class="title">
+                        {{ item.name[lang] }}
+                    </div>
+                    <div class="mark">
+                        <i class="fa fa-heart-o"></i>
+                        {{ item.likes }}
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+</div>

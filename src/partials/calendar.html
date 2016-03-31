@@ -1,0 +1,35 @@
+<link rel="stylesheet" type="text/css" href="css/calendar.css" />
+
+<div id="events">
+    <div class="top-menu">
+        <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+        <div class="title">
+        <span>
+            {{ 'События' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <div class="filters">
+            <div class="filter">
+                {{ 'с' | translate  }}
+                <input type="text" ng-model="start_date" ng-change="newSearch()" />
+                <i class="fa fa-chevron-down"></i>
+            </div>
+            <div class="filter">
+                {{ 'по' | translate  }}
+                <input type="text" ng-model="end_date" ng-change="newSearch()" />
+                <i class="fa fa-chevron-down"></i>
+            </div>
+        </div>
+        <div class="empty">
+            <div class="emptyResult" ng-if="!selection || selection.length == 0">
+                {{ 'Для данного диапазона событий не найдено' | translate }}
+            </div>
+        </div>
+        <ng-include src="'partials/elements/selection_item.html'" ng-repeat="item in selection" ng-init="selectionType = 'event'"></ng-include>
+    </div>
+
+</div>

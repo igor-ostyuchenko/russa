@@ -1,0 +1,99 @@
+<link rel="stylesheet" type="text/css" href="css/appeals.css" />
+
+<div id="appeals">
+    <div class="top-menu">
+        <div class="title">
+            <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+            <!--<span class="logout" ng-click="logOut()"><i class="fa fa-sign-out"></i></span>-->
+        <span>
+            {{ 'Обращения' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <div class="message" ng-repeat="msg in messages" ng-click="goToAppeal(msg)" ng-class="{'active': msg.active, 'non-active': itemSelected}">
+            <div class="title">№{{ msg.id }} от {{ msg.create_date | msgDate }}</div>
+            <div class="status {{ status[msg.status]['css'] }}"><span>{{ 'Состояние' | translate }}:</span> {{ status[msg.status][lang] }}</div>
+            <div class="arrow"><i class="fa fa-chevron-right"></i></div>
+            <div class="info">
+                <div class="rating" ng-if="msg.status == 2">
+                    <div class="title">{{ 'Оцените ответ' | translate }}:</div>
+                    <div class="stars">
+                        <div ng-repeat="s in [1,2,3,4,5]" class="star"
+                             ng-click="rateChange(msg, s)"
+                             ng-class="{'rated': getRating(msg) >= s}">
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="title">{{ msg.name }}</div>
+                <div class="text" ng-bind-html="msg.msg | html"></div>
+                <div class="answer-title" ng-if="msg.answer != ''">{{ 'Ответ' | translate }}:</div>
+                <div class="answer" ng-if="msg.answer != ''" ng-bind-html="msg.answer | html"></div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="new-appeal-bg" ng-class="{'active': newAppeal.show}" ng-click="newAppeal.show = false"></div>
+    <div class="send new-app" ng-click="sendNew()" ng-if="newAppeal.show">
+        <i class="fa" ng-class="{'fa-send': !newAppeal.sending, 'fa-spinner fa-pulse': newAppeal.sending}"></i>
+    </div>
+    <form id="newAppeal" name="newAppeal" action="" method="post" enctype="multipart/form-data">
+
+        <div class="new-appeal" style="height: {{ getSelectionHeight() }}px;" ng-class="{'active': newAppeal.show}">
+
+            <div class="name">
+                <input type="text" ng-model="user.fio" placeholder="{{ 'Ваше имя' | translate }}"  ng-class="{'error': newAppeal.fio_error}"/>
+                <div class="error-text" ng-class="{'show': newAppeal.fio_error}">{{ 'Пожалуйста, укажите ваше имя' | translate }}</div>
+            </div>
+            <div class="feed">
+                <input name="message_status_onoff" type="checkbox" ng-model="newAppeal.feed" id="feed"/><label for="feed">{{ "Уведомлять об изменениях" | translate }}</label>
+            </div>
+            <div class="category">
+                <select name="category_id" ng-model="newAppeal.category" ng-options="cat.id as cat.name[lang] for cat in categoryes" ng-init="newAppeal.category = 1"></select>
+            </div>
+            <div class="files">
+                <span class="title">{{ 'Приложить файы' | translate }}</span>
+                <div class="file">
+                    <input type="file" name="files[]" onchange="fileChanged(this)" num="0" class="empty"/>
+                    <i class="fa fa-paperclip"></i>
+                    <span class="added-file"></span>
+                </div>
+            </div>
+            <div class="subject">
+                <input type="text" name="name" ng-model="newAppeal.subject" placeholder="{{ 'Тема' | translate }}"/>
+            </div>
+            <div class="text">
+                <textarea name="msg" ng-model="newAppeal.text" placeholder="{{ 'Текст обращения' | translate }}" ng-class="{'error': newAppeal.text_error}"></textarea>
+            </div>
+
+
+        </div>
+    </form>
+    <div class="add-new" ng-click="showForm()">
+        <i class="fa fa-plus"></i>
+    </div>
+</div>
+<script>
+    function fileChanged(elem) {
+        var num =  $("#newAppeal .files .file").length;
+        Log("This file", $(elem).val());
+        $(elem).parent().find('.added-file').html($(elem).val().split('\\').pop());
+
+        $(elem).toggleClass('empty', $(elem).val() == '');
+
+        if ($("#newAppeal .files .empty").length == 0) {
+
+            var $newFile = $("#newAppeal .files .file").last().clone();
+            $newFile.find('input[type=file]').attr('num', num);
+            $newFile.find('.added-file').html('');
+            $("#newAppeal .files").append($newFile);
+        }
+
+    }
+</script>

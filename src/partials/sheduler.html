@@ -1,0 +1,36 @@
+<link rel="stylesheet" type="text/css" href="css/sheduler.css" />
+
+<div id="sheduler">
+    <div class="top-menu">
+        <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+        <div class="title">
+        <span ng-if="!addMode">
+            {{ 'Планировщик' | translate }}
+        </span>
+            <span ng-if="addMode">
+                {{ "Выберите список" | translate }}
+            </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <div class="section" ng-class="{'edit': section.editMode, 'removed': section.removed}" ng-repeat="section in sections track by $index">
+            <div class="edit-block">
+                <div class="button" ng-if="addMode" ng-click="addToList(section)"><i class="fa fa-check"></i></div>
+                <div class="button" ng-click="setEditable(section)" ng-if="!section.editMode && !addMode"><i class="fa fa-pencil"></i></div>
+                <div class="button apply" ng-click="applySectionModify(section)" ng-if="section.editMode"><i class="fa fa-check"></i></div>
+                <div class="button remove" ng-click="removeSection(section)" ng-if="section.editMode"><i class="fa fa-trash"></i></div>
+            </div>
+            <div class="title">
+                <input type="text" ng-model="section.name" ng-class="{'disabled': !section.editMode}" ng-disabled="!section.editMode"/>
+            </div>
+            <div class="click-zone" ng-if="!section.editMode" ng-click="goToSection(section)"></div>
+        </div>
+
+    </div>
+
+    <div class="add-new" ng-click="addSection()">
+        <i class="fa fa-plus"></i>
+    </div>
+</div>

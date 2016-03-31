@@ -1,0 +1,27 @@
+<div id="media-player">
+    <div class="blend" ng-click="__currentAudio.close()"></div>
+    <div class="position-wrapper">
+        <div class="player-wrapper">
+            <div class="player">
+                <div class="close" ng-click="__currentAudio.close()"><i class="fa fa-times"></i></div>
+                <div class="title">
+                    {{ __currentAudio.name }}
+                </div>
+
+                <div class="controls">
+                    <div class="activator" ng-click="(__currentAudio.status == 'stop' || __currentAudio.status == 'pause') ? __currentAudio.play() : __currentAudio.pause()">
+                        <i class="fa fa-play" ng-if="__currentAudio.status == 'pause' || __currentAudio.status == 'stop'"></i>
+                        <i class="fa fa-pause" ng-if="__currentAudio.status == 'play'"></i>
+                    </div>
+                    <div class="progress">
+                        <div class="bar" style="width:{{ __currentAudio.progress }}%;"></div>
+                    </div>
+                </div>
+
+                <div class="description">
+                    {{ __currentAudio.description }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

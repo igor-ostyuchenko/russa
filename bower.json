@@ -1,0 +1,30 @@
+{
+  "name": "fbguide",
+  "version": "1.0.0",
+  "authors": [
+    "p.kuznecov <kuznetps@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "1.*",
+    "angular-ui-router": "*",
+    "ngstorage": "*",
+    "angular-animate": "*",
+    "angular-touch": "*",
+    "angular-sanitize": "*",
+    "requirejs": "*",
+    "jquery-mobile-bower": "*",
+    "owl.carousel": "2.*",
+    "font-awesome": "*",
+    "datetimepicker": "*",
+    "jquery.panzoom": "*"
+  }
+}

@@ -1,0 +1,22 @@
+<link rel="stylesheet" type="text/css" href="css/events.css" />
+
+<div id="events">
+    <div class="top-menu">
+        <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+        <div class="filterBtn" onclick="showFilter()"><i class="fa fa-filter"></i></div>
+        <div class="title">
+        <span>
+            {{ 'События' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+
+    <!--ng-include src="'partials/elements/filter.html'"></ng-include-->
+
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <ng-include src="'partials/elements/selection_item.html'" ng-repeat="item in filtered"  ng-init="selectionType = 'event'"></ng-include>
+    </div>
+
+</div>
+<ng-include src="'partials/elements/entity_filter.html'" ng-init="entityFilter.type='event'"></ng-include>

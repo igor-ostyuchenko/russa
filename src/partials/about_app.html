@@ -1,0 +1,51 @@
+<link rel="stylesheet" type="text/css" href="css/about_app.css" />
+
+<div id="about_app">
+    <div class="top-menu">
+        <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+        <div class="title">
+        <span>
+            {{ 'О приложении' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <div class="info" ng-bind-html="About.about_text1[lang] | html"></div>
+        <div class="address" ng-bind-html="About.about_text2[lang] | html"></div>
+
+        <div class="link" ng-click="goToFed()">
+            <img src="img/fed.png" />
+            {{ 'Федеральное агентство по туризму Министерства культуры Российской Федерации' | translate }}
+        </div>
+
+        <div class="contacts" ng-class="{'unfolded': !folded}">
+            <div class="share fb">
+                <div class="btn" ng-click="goSocial($event, 'fb')">
+                    <i class="fa fa-facebook-f"></i>
+                </div>
+            </div>
+            <div class="share tw" ng-click="goSocial($event, 'tw')">
+                <div class="btn">
+                    <i class="fa fa-twitter"></i>
+                </div>
+            </div>
+            <div class="share gp" ng-click="goSocial($event, 'gp')">
+                <div class="btn">
+                    <i class="fa fa-google-plus"></i>
+                </div>
+            </div>
+            <div class="share vk" ng-click="goSocial($event, 'vk')">
+                <div class="btn">
+                    <i class="fa fa-vk"></i>
+                </div>
+            </div>
+        </div>
+
+        <a class="select-button"  href="mailto:{{ About.email }}">
+            {{ 'Напишите нам' | translate }}
+        </a>
+    </div>
+
+</div>

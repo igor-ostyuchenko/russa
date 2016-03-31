@@ -1,0 +1,65 @@
+.top-menu {
+  height: 3em;
+  line-height: 3em;
+
+  & > .backBtn {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 24px;
+    width: 45px;
+    text-align: center;
+  }
+
+  & > .title {
+    font-size: 1.5em;
+    height: 10%;
+    /* vertical-align: middle; */
+    display: table;
+    text-align: center;
+    width: 100%;
+    padding-left: 15%;
+    box-sizing: border-box;
+	color:red;
+
+
+    span {
+      display: table-cell;
+      width: 85%;
+      vertical-align: middle;
+    }
+
+    .burger-menu {
+      display: table-cell;
+      vertical-align: middle;
+      width: 15%;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+
+      &.active {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+      }
+
+    }
+  }
+}

@@ -1,0 +1,229 @@
+#search {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  text-shadow: none;
+  font-family: 'Open Sans';
+
+  //= top_menu.scss
+
+ .top-menu > .title {
+    padding-left: 15px;
+    padding-top: 5px;
+  }
+
+  .title .filter {
+    display: table-cell;
+    width: 80%;
+    overflow: hidden;
+    position: static;
+    /* margin-left: -10%; */
+    vertical-align: middle;
+    /* left: 15px; */
+    border: 1px solid #ddd;
+    height: auto;
+    line-height: 1em;
+    border-radius: 30px;
+
+
+    form {
+      display: block;
+      position: relative;
+
+      .fa-search {
+        position: absolute;
+        left: 0px;
+        top: 7px;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
+
+      .fa-times {
+        position: absolute;
+        /* left: 2px; */
+        top: 7px;
+        right: 0;
+        width: 30px;
+        height: 30px;
+        color: #ddd;
+        font-size: 14px;
+      }
+
+      input {
+        font-size: 16px;
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        box-sizing: border-box;
+        border: none;
+        outline: none;
+      }
+
+    }
+  }
+
+  .filters {
+    display: block;
+    word-spacing: -5px;
+    padding-bottom: 15px;
+
+    .filter {
+      display: inline-block;
+      padding: 5px;
+      padding-left: 5px;
+      padding-right: 5px;
+      border: 1px solid black;
+      margin: 0;
+      color: black;
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding;
+      background-clip: padding-box;
+
+      &:first-child {
+        border-right: none;
+        border-radius: 20px 0px 0px 20px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+
+      }
+
+      &:last-child {
+        border-left: none;
+        border-radius: 0px 20px 20px 0px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+      }
+
+      &.active {
+        color: white;
+        background: black;
+      }
+    }
+  }
+
+  .selection {
+    overflow-y: auto;
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    -ms-transition: height 0.2s;
+    -o-transition: height 0.2s;
+    transition: height 0.2s;
+
+    .startMessage, .emptyResult {
+      font-size: 24px;
+      padding: 15%;
+    }
+
+
+    .item-container {
+      height: 40%;
+      position: relative;
+
+      &.out {
+        transition-delay: 0.3s;
+        height: 0%;
+        -webkit-transition: height 0.3s;
+        -moz-transition: height 0.3s;
+        -ms-transition: height 0.3s;
+        -o-transition: height 0.3s;
+        transition: height 0.3s;
+
+        .item {
+          left: 100%;
+          opacity: 0;
+          -webkit-transition: left 0.3s, opacity 0.3s;
+          -moz-transition: left 0.3s, opacity 0.3s;
+          -ms-transition: left 0.3s, opacity 0.3s;
+          -o-transition: left 0.3s, opacity 0.3s;
+          transition: left 0.3s, opacity 0.3s;
+        }
+      }
+
+    }
+
+    .item {
+      //height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+
+      //position: relative;
+
+      position: absolute;
+      left: 0%;
+      width: 100%;
+      top: 0;
+      height: 100%;
+      opacity: 1;
+
+      &.active {
+        opacity: 0.8;
+      }
+
+
+      .blend {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0, 0.3);
+
+        & > .title {
+          text-align: left;
+          padding: 15px;
+          color: white;
+          font-size: 1.4em;
+        }
+      }
+
+      .info-panel {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        white-space: nowrap;
+        text-align: left;
+        background-color: rgba(0,0,0,0.4);
+
+        display: table;
+
+        .title, .mark {
+          display: table-cell;
+          vertical-align: middle;
+          color: white;
+          padding-top: 10px;
+          padding-bottom: 10px;
+
+          &.favorite {
+            i {
+              color: #a80000;
+              padding: 2px;
+              border-radius: 15px;
+            }
+          }
+        }
+
+        .title {
+          padding-left: 15px;
+          float: left;
+          width: 82%;
+          white-space: normal;
+        }
+
+        .mark {
+          margin-right: 15px;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+        }
+      }
+
+
+    }
+  }
+
+}

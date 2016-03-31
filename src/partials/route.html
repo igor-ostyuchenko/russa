@@ -1,0 +1,147 @@
+<link rel="stylesheet" type="text/css" href="css/route.css" />
+
+<div id="route">
+    <div class="top-menu">
+        <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+        <div class="title">
+        <span>
+            {{ maxLength(Route.name[lang]) || 'Загрузка...' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <div class="loader" ng-if="!(ImageCache[Route.img.url]) || LoadingList[Route.img.url]"></div>
+        <div class="owl-carousel">
+            <img class="object-image"
+                 ng-repeat="img in ::(Route.images && Route.images.length > 0 ? Route.images : [Route.img])"
+                 ng-src="{{  ImageCache[img.url]}}"
+                 ng-init="getImageByUrl(img.url, '#route .selection')"
+                 render-message="RouteRenderFinished"
+                 ng-click="showFullScreen(img)"
+                 style="height:{{ ::getImageHeight() }}px;"/>
+        </div>
+
+        <div class="length" ng-if="item.length" >
+            <span>{{ Route.length }}{{ 'м' | translate }}</span>
+        </div>
+
+        <div class="description" ng-click="showFull()" ng-class="{'unfolded': !folded}">
+            <div class="text minified"
+                 ng-if="folded"
+                 ng-bind-html="Route.description[lang] | html">
+            </div>
+            <div class="text"
+                 ng-class="{'unfolded': !folded}"
+                 ng-if="!folded"
+                 ng-bind-html="Route.description[lang] | html">
+                <div class="blend" ></div>
+
+            </div>
+
+            <div class="tags" ng-class="{'unfolded': !folded}">
+                <div class="category" ng-if="::linkedContent.events.length > 0">
+                    <div class="title">
+                        {{ 'События' | translate }} ({{::linkedContent.events.length }})
+                    </div>
+                    <div class="list">
+                        <div class="item" ng-repeat="item in ::linkedContent.events">
+                            <div class="counter">
+                                <i class="fa fa-heart-o"></i>
+                                {{ ::item.likes || 0 }}
+                            </div>
+                            <div class="title">{{ ::item.name[lang] }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category" ng-if="::linkedContent.audios.length > 0">
+                    <div class="title">
+                        {{ 'Аудиозаписи' | translate }} ({{::linkedContent.audios.length }})
+                    </div>
+                    <div class="list">
+                        <div class="item" ng-repeat="item in ::linkedContent.audios">
+                            <div class="counter" ng-click="loadAudio(item, lang)">
+                                <i class="fa fa-cloud-download" ng-if="!item.loading"></i>
+                                <i class="fa fa-refresh fa-spin" ng-if="item.loading"></i>
+                            </div>
+                            <div class="title">{{ ::item.name[lang] }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category" ng-if="::linkedContent.routes.length > 0">
+                    <div class="title">
+                        {{ 'Маршруты' | translate }} ({{::linkedContent.routes.length }})
+                    </div>
+                    <div class="list">
+                        <div class="item" ng-repeat="item in ::linkedContent.routes" ng-click="goToTag(item, 'route')">
+                            <div class="counter">
+                                <i class="fa fa-heart-o"></i>
+                                {{ ::item.likes || 0 }}
+                            </div>
+                            <div class="title">{{ ::item.name[lang] }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category" ng-if="::linkedContent.objects.length > 0">
+                    <div class="title">
+                        {{ 'Объекты' | translate }} ({{::linkedContent.objects.length }})
+                    </div>
+                    <div class="list">
+                        <div class="item" ng-repeat="item in ::linkedContent.objects" ng-click="goToTag(item, 'object')">
+                            <div class="counter">
+                                <i class="fa fa-heart-o"></i>
+                                {{ ::item.likes || 0 }}
+                            </div>
+                            <div class="title">{{ ::item.name[lang] }}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="adresses" ng-bind-html="Route.contacts[lang] | html">
+            </div>
+            <div class="contacts" ng-class="{'unfolded': !folded}">
+                <div class="share fb">
+                    <div class="btn" ng-click="shareSocial('fb')">
+                        <i class="fa fa-facebook-f"></i>
+                    </div>
+                </div>
+                <div class="share tw" ng-click="shareSocial('tw')">
+                    <div class="btn">
+                        <i class="fa fa-twitter"></i>
+                    </div>
+                </div>
+                <div class="share gp" ng-click="shareSocial('gp')">
+                    <div class="btn">
+                        <i class="fa fa-google-plus"></i>
+                    </div>
+                </div>
+                <div class="share tb" ng-click="shareSocial('tb')">
+                    <div class="btn">
+                        <i class="fa fa-tumblr"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ng-include src="'partials/elements/entity_actions.html'"  ng-init="item = Route; disableSheduler = true;"></ng-include>
+    </div>
+
+</div>
+<div class="fullScreenImage">
+    <div class="close-btn" ng-click="closeFullScreen();">
+        <i class="fa fa-times"></i>
+    </div>
+    <img ng-src="{{ fullScreenImage.url }}"/>
+    <div class="description" ng-if="fullScreenImage.description && fullScreenImage.description[lang] != ''">
+        {{ fullScreenImage.description[lang] }}
+    </div>
+</div>
+<style>
+    #route .selection .description .text.minified::after{
+        content: '{{ 'Развернуть' | translate }}';
+    }
+</style>

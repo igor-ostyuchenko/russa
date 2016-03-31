@@ -1,0 +1,11 @@
+{{ 'В разработке' | translate }}
+<hr/>
+<b>{{ 'Выбран язык'|translate }}:</b> {{ langTitle }} <br/>
+<b>{{ 'Выбран город'|translate }}:</b> {{ city.title[lang] }}
+<hr/>
+<br/>
+<a href="index.html"
+   data-role="button"
+   data-icon="delete"
+   ng-click="eraseAll()"
+   data-theme="b">{{ "Стереть настройки и выйти" | translate }}</a>

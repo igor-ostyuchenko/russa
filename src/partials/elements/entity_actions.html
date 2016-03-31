@@ -1,0 +1,18 @@
+<div class="actions" ng-class="{'unfolded': !folded}">
+  <div class="action" ng-click="toFavorites(item)" ng-class="{'favorite' : item.inFavorites, 'third': disableSheduler}">
+    <i class="fa fa-heart"></i>
+    {{ ::'В избранное' | translate }}
+  </div>
+  <div class="action" ng-click="showMap(item)" ng-class="{'third': disableSheduler}">
+    <i class="fa fa-map-marker"></i>
+    {{ ::'На карте' | translate }}
+  </div>
+  <div class="action" ng-click="toSheduler(item)" ng-class="{'in-sheduler': inSheduler}" ng-if="!disableSheduler">
+    <i class="fa fa-bell"></i>
+    {{ ::'Напоминание' | translate }}
+  </div>
+  <div class="action" ng-click="toPlans(item)" ng-class="{'third': disableSheduler}">
+    <i class="fa fa-star"></i>
+    {{ ::'В планы' | translate }}
+  </div>
+</div>

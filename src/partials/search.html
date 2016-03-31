@@ -1,0 +1,57 @@
+<link rel="stylesheet" type="text/css" href="css/search.css" />
+
+<div id="search">
+    <div class="top-menu">
+        <div class="title">
+            <div class="filter">
+                <form ng-submit="newSearch(query)">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="{{ 'Поиск' | translate }}" ng-model="query"/>
+                    <i class="fa fa-times" ng-click="query = ''; newSearch('');"></i>
+                </form>
+            </div>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+    <div class="filters">
+        <div class="filter" ng-class="{'active': activeFilter == 'objects'}" ng-click="activeFilter = 'objects'">
+            {{ 'Объекты' | translate }}
+        </div>
+        <div class="filter" ng-class="{'active': activeFilter == 'routes'}" ng-click="activeFilter = 'routes'">
+            {{ 'Маршруты' | translate }}
+        </div>
+        <div class="filter" ng-class="{'active': activeFilter == 'events'}" ng-click="activeFilter = 'events'">
+            {{ 'События' | translate }}
+        </div>
+    </div>
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <div class="startMessage" ng-if="showStartMessage">
+            {{ 'Мы найдем все, что вам нужно' | translate }}
+        </div>
+        <div class="emptyResult" ng-if="!showStartMessage && (selection.objects.length == 0 && selection.events.length == 0 && selection.routes.length == 0)">
+            {{ 'Извините, по этому запросу ничего не найдено' | translate }}
+        </div>
+        <div class="item-container"
+             ng-class="{'out': item.out}"
+             ng-repeat="item in selection.objects"
+             ng-if="activeFilter == 'objects'">
+            <ng-include src="'partials/elements/selection_item.html'"
+                        ng-init="item.type='object'; item.active = false;"></ng-include>
+        </div>
+        <div class="item-container"
+             ng-class="{'out': item.out}"
+             ng-repeat="item in selection.routes"
+             ng-if="activeFilter == 'routes'">
+            <ng-include src="'partials/elements/selection_item.html'"
+                        ng-init="item.type='route'; item.active = false;"></ng-include>
+        </div>
+        <div class="item-container"
+             ng-class="{'out': item.out}"
+             ng-repeat="item in selection.events"
+             ng-if="activeFilter == 'events'">
+            <ng-include src="'partials/elements/selection_item.html'"
+                        ng-init="item.type='event'; item.active = false;"></ng-include>
+        </div>
+
+    </div>
+</div>

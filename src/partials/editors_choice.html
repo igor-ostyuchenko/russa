@@ -1,0 +1,72 @@
+<link rel="stylesheet" type="text/css" href="css/editors_choice.css" />
+
+<div id="editors_choice">
+    <div class="top-menu">
+        <div class="title">
+        <span>
+            {{ 'Выбор редакции' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <div class="item"
+             ng-init="getImageByUrl(item.img.url, '#editors_choice .selection')"
+             style="background-image: url('{{ ImageCache[item.img.url] }}');"
+             ng-repeat="item in selection">
+            <div class="loader" ng-if="!(ImageCache[item.img.url]) || LoadingList[item.img.url]"></div>
+            <div class="blend">
+                <div class="title">
+                    {{ item.name[lang] }}
+                </div>
+                <div class="buttons">
+                    <div class="button" ng-if="item.objects && item.objects.length > 0"
+                         ng-class="{'active': selected == (item.name[lang] + '.objects')}"
+                         ng-click="setSelect(item, 'objects', $index)">
+                        <div class="title">
+                            {{ 'Объекты' | translate }}
+                        </div>
+                        <div class="value">
+                            {{ item.objects.length || 0 }}
+                        </div>
+                    </div>
+
+                    <div class="button" ng-if="item.events && item.events.length > 0"
+                         ng-class="{'active': selected == (item.name[lang] + '.events')}"
+                         ng-click="setSelect(item, 'events', $index)">
+                        <div class="title">
+                            {{ 'События' | translate }}
+                        </div>
+                        <div class="value">
+                            {{ item.events.length || 0 }}
+                        </div>
+                    </div>
+
+                    <div class="button" ng-if="item.routes && item.routes.length > 0"
+                         ng-class="{'active': selected == (item.name[lang] + '.routes')}"
+                         ng-click="setSelect(item, 'routes', $index)">
+                        <div class="title">
+                            {{ 'Маршруты' | translate }}
+                        </div>
+                        <div class="value">
+                            {{ item.routes.length || 0 }}
+                        </div>
+                    </div>
+
+                    <div class="button" ng-if="item.audios && item.audios.length > 0"
+                         ng-class="{'active': selected == (item.name[lang] + '.audios')}"
+                         ng-click="setSelect(item, 'audios', $index)">
+                        <div class="title">
+                            {{ 'Аудиогиды' | translate }}
+                        </div>
+                        <div class="value">
+                            {{ item.audios.length || 0 }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

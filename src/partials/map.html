@@ -1,0 +1,43 @@
+<link rel="stylesheet" type="text/css" href="css/map.css" />
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9XnuVclhRu4AfA0hLcr8_HFp4J6exYQI&callback=initMap">
+</script>
+
+<div id="map">
+    <div class="top-menu">
+        <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+        <div class="filterBtn" ng-if="showMapFilter" onclick="showFilter()"><i class="fa fa-filter"></i></div>
+        <div class="title">
+        <span>
+            {{ maxLength(Map.name[lang]) || 'Загрузка...' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+
+    <div class="filter" ng-if="showMapFilter" style="top: {{ getFilterTop() }}px;">
+        <form ng-submit="newSearch(mapFilter)">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="{{ 'Поиск' | translate }}" ng-model="mapFilter"/>
+            <i class="fa fa-times" ng-click="mapFilter = ''; newSearch('');"></i>
+        </form>
+    </div>
+
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <div id="map_canvas" style="width:100%;height:100%" >
+        </div>
+    </div>
+
+</div>
+
+<div class="screenshot" ng-click="takeScreenshot()">
+    <i class="fa fa-save"></i>
+</div>
+
+<ng-include src="'partials/elements/entity_filter.html'" ng-init="entityFilter.type='all'"></ng-include>
+
+<script>
+    function initMap() {
+        $('body').scope().$broadcast('mapInit');
+    }
+</script>

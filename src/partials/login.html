@@ -1,0 +1,72 @@
+<link rel="stylesheet" type="text/css" href="css/login.css" />
+
+<div id="login">
+    <div class="top-menu">
+        <div class="title">
+            <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+    <div class="wrapper">
+
+        <div class="app-title">
+            Fifa World Cup 2018
+        <span class="bold">
+            Guide
+        </span>
+        </div>
+
+        <div class="inputs">
+            <form ng-submit="signIn()">
+                <input type="email" class="name" required ng-disabled="loading"
+                       ng-keypress="focusPass($event)"
+                       ng-model="login" placeholder="{{ 'Email-адрес' | translate }}"/>
+                <input type="password" id="pass" class="password" required ng-disabled="loading"
+                       ng-class="{'emptyPass': emptyPass}"
+                       ng-keypress="checkEnter($event)"
+                       ng-model="password" placeholder="{{ 'Пароль' | translate }}"/>
+            </form>
+            <div class="amnesia" ng-click="amnesia()">
+                {{ "Забыли пароль" | translate }}?
+            </div>
+
+            <div class="error-text" ng-show="error.show">
+                {{ error.text[lang] }}
+            </div>
+        </div>
+
+        <div class="buttons">
+            <div class="button" ng-click="signIn()">
+                {{ 'Вход' | translate }}
+            </div>
+            <div class="button" ng-click="signUp()">
+                {{ 'Регистрация' | translate }}
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="fio-wrapper">
+    <div class="blend"></div>
+    <div class="container">
+        <div class="title">
+            <span>{{ 'Как вас зовут?' | translate }}</span> <i class="fa fa-times" onclick="$('.fio-wrapper').fadeOut(300)"></i>
+        </div>
+        <form ng-submit="sendSignUp(fio)">
+            <div class="first-name">
+                <input type="text" ng-model="fio.first" placeholder="{{ 'Ваше имя' | translate }}"/>
+            </div>
+            <div class="last-name">
+                <input type="text" ng-model="fio.last" placeholder="{{ 'Ваша фамилия' | translate }}"/>
+            </div>
+            <div class="submit">
+                <button type="submit">
+                    <i class="fa" ng-class="{'fa-check' : !loading, 'fa-spinner fa-spin': loading}"></i>
+                    {{ 'Отправить' | translate }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

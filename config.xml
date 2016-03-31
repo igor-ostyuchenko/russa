@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="app.fbguide" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>FBGuide</name>
+    <description>
+        fbApp footbal guide application
+    </description>
+    <content src="index.html" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="false" />
+    <preference name="auto-hide-splash-screen" value="false" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-installLocation" value="auto" />
+    <gap:plugin name="org.apache.cordova.battery-status" />
+    <gap:plugin name="org.apache.cordova.camera" />
+    <gap:plugin name="org.apache.cordova.media-capture" />
+    <gap:plugin name="org.apache.cordova.console" />
+    <gap:plugin name="org.apache.cordova.contacts" />
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.device-motion" />
+    <gap:plugin name="org.apache.cordova.device-orientation" />
+    <gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="org.apache.cordova.file" />
+    <gap:plugin name="org.apache.cordova.file-transfer" />
+    <gap:plugin name="org.apache.cordova.geolocation" />
+    <gap:plugin name="org.apache.cordova.globalization" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="org.apache.cordova.media" />
+    <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.vibration" />
+
+    <icon src="icon.png" />
+    <platform name="android">
+        <icon src="www/res/android/icon/ldpi.png"             density="ldpi"   />
+        <icon src="www/res/android/icon/mdpi.png"             density="mdpi"   />
+        <icon src="www/res/android/icon/hdpi.png"             density="hdpi"   />
+        <icon src="www/res/android/icon/xhdpi.png"            density="xhdpi"  />
+        <icon src="www/res/android/icon/xxhdpi.png"           density="xxhdpi" />
+        <icon src="www/res/android/icon/xxxhdpi.png"          density="xxxhdpi"/>
+
+        <splash src="www/res/android/screen/land-ldpi.png"    density="land-ldpi"   />
+        <splash src="www/res/android/screen/land-hdpi.png"    density="land-hdpi"   />
+        <splash src="www/res/android/screen/land-xhdpi.png"   density="land-xhdpi"  />
+        <splash src="www/res/android/screen/land-xxhdpi.png"  density="land-xxhdpi" />
+        <splash src="www/res/android/screen/land-xxxhdpi.png" density="land-xxxhdpi"/>
+
+        <splash src="www/res/android/screen/port-ldpi.png"    density="port-ldpi"   />
+        <splash src="www/res/android/screen/port-mdpi.png"    density="port-mdpi"   />
+        <splash src="www/res/android/screen/port-hdpi.png"    density="port-hdpi"   />
+        <splash src="www/res/android/screen/port-xhdpi.png"   density="port-xhdpi"  />
+        <splash src="www/res/android/screen/port-xxhdpi.png"  density="port-xxhdpi" />
+        <splash src="www/res/android/screen/port-xxxhdpi.png" density="port-xxxhdpi"/>
+    </platform>
+
+    <platform name="ios">
+        <icon src="www/res/ios/icon/icon-60@3x.png"    width="180" height="180" />
+        <icon src="www/res/ios/icon/icon-60.png"       width="60"  height="60" />
+        <icon src="www/res/ios/icon/icon-60@2x.png"    width="120" height="120" />
+        <icon src="www/res/ios/icon/icon-76.png"       width="76"  height="76" />
+        <icon src="www/res/ios/icon/icon-76@2x.png"    width="152" height="152" />
+        <icon src="www/res/ios/icon/icon-40.png"       width="40"  height="40" />
+        <icon src="www/res/ios/icon/icon-40@2x.png"    width="80"  height="80" />
+        <icon src="www/res/ios/icon/icon.png"          width="57"  height="57" />
+        <icon src="www/res/ios/icon/icon@2x.png"       width="114" height="114" />
+        <icon src="www/res/ios/icon/icon-72.png"       width="72"  height="72" />
+        <icon src="www/res/ios/icon/icon-72@2x.png"    width="144" height="144" />
+        <icon src="www/res/ios/icon/icon-small.png"    width="29"  height="29" />
+        <icon src="www/res/ios/icon/icon-small@2x.png" width="58"  height="58" />
+        <icon src="www/res/ios/icon/icon-50.png"       width="50"  height="50" />
+        <icon src="www/res/ios/icon/icon-50@2x.png"    width="100" height="100" />
+
+        <splash src="www/res/ios/screen/Default-Landscape~ipad.png"            width="1024"  height="768"/>
+        <splash src="www/res/ios/screen/Default-Landscape@2x~ipad.png"         width="2048"  height="1536"/>
+        <splash src="www/res/ios/screen/Default-Portrait~ipad.png"             width="768"   height="1024"/>
+        <splash src="www/res/ios/screen/Default-Portrait@2x~ipad.png"          width="1536"  height="2048"/>
+
+        <splash src="www/res/ios/screen/Default-Landscape~iphone.png"          width="480"   height="320"/>
+        <splash src="www/res/ios/screen/Default-Landscape@2x~iphone.png"       width="960"   height="640"/>
+        <splash src="www/res/ios/screen/Default-Portrait~iphone.png"           width="320"   height="480"/>
+        <splash src="www/res/ios/screen/Default-Portrait@2x~iphone.png"        width="640"   height="960"/>
+
+        <splash src="www/res/ios/screen/Default-Landscape@2x~iphone5.png"      width="1136"  height="640"/>
+        <splash src="www/res/ios/screen/Default-Landscape@2x~iphone6.png"      width="1334"  height="750"/>
+        <splash src="www/res/ios/screen/Default-Landscape@2x~iphone6plus.png"  width="2208"  height="1242"/>
+        <splash src="www/res/ios/screen/Default-Portrait@2x~iphone5.png"       width="640"   height="1136"/>
+        <splash src="www/res/ios/screen/Default-Portrait@2x~iphone6.png"       width="750"   height="1334"/>
+        <splash src="www/res/ios/screen/Default-Portrait@2x~iphone6plus.png"   width="1242"  height="2208"/>
+    </platform>
+    
+    <access origin="*" />
+    <access origin="*.google.com" />
+    <access origin="*.googleapis.com" />
+    <access origin="*.gstatic.com" />
+    <plugin name="cordova-plugin-whitelist" version="1" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-navigation href="http://*/*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <feature name="SocialSharing">
+            <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+        </feature>
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <feature name="SocialSharing">
+            <param name="ios-package" value="SocialSharing" />
+        </feature>
+        <feature name="Media">
+            <param name="ios-package" value="CDVSound" />
+        </feature>
+        <feature name="Camera">
+            <param name="ios-package" value="CDVCamera" />
+        </feature>
+        <feature name="Console">
+            <param name="ios-package" value="CDVLogger" />
+        </feature>
+        <feature name="Device">
+            <param name="ios-package" value="CDVDevice" />
+        </feature>
+        <feature name="Notification">
+            <param name="ios-package" value="CDVNotification" />
+        </feature>
+        <feature name="File">
+            <param name="ios-package" value="CDVFile" />
+        </feature>
+        <feature name="FileTransfer">
+            <param name="ios-package" value="CDVFileTransfer" />
+        </feature>
+        <feature name="Geolocation">
+            <param name="ios-package" value="CDVLocation" />
+        </feature>
+        <feature name="Capture">
+            <param name="ios-package" value="CDVCapture" />
+        </feature>
+        <feature name="NetworkStatus">
+            <param name="ios-package" value="CDVConnection" />
+        </feature>
+        <feature name="SplashScreen">
+            <param name="ios-package" value="CDVSplashScreen" />
+        </feature>
+    </platform>
+    <engine name="android" spec="~4.1.1" />
+</widget>

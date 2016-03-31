@@ -1,0 +1,21 @@
+<link rel="stylesheet" type="text/css" href="css/audio.css" />
+
+<div id="audio">
+    <div class="top-menu">
+        <div class="title">
+        <span>
+            {{ Audio.name[lang] || 'Загрузка...' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <div class="owl-carousel">
+            <img class="object-image"
+                 ng-src="{{ ::Audio.img.url }}"
+                 style="height:{{ ::getImageHeight() }}px;"/>
+        </div>
+    </div>
+
+</div>

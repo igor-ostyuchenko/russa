@@ -1,0 +1,57 @@
+<link rel="stylesheet" type="text/css" href="css/weather.css" />
+
+
+<div id="weather">
+    <div class="top-menu">
+        <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+        <div class="title">
+        <span>
+            {{ 'Погода' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+
+    <div class="loader" ng-class="{'hide': loaded}" >
+        <img src="img/footbal_preloader.GIF"/>
+    </div>
+
+        <div class="owl-carousel" style="height: {{ getCarouselHeight() }}px;">
+            <div ng-repeat="city in ::cities" render-message="cityRenderFinished" data-city="{{city.id}}">
+                <div class="title" style="height: {{ ::getTitleHeight() }}px;">
+                    <div class="name">
+                        {{ ::city.name[lang] }}
+                    </div>
+                    <div class="date">
+                        {{ ::dateStr.day }}, {{ ::dateStr.date }} {{ ::dateStr.month }}
+                    </div>
+                </div>
+                <div class="weather-content">
+                    <img src="{{ weatherIcon(city.weather.today) }}"/>
+                    <div class="degree">
+                        {{ ::city.weather.today.temperature }}&deg;
+                    </div>
+                    <div class="addition">
+                        <div class="info">
+                            <i class="fa fa-flag"></i> {{ ::city.weather.today.wind_speed }}{{ 'км/ч' | translate }}
+                        </div>
+                        <div class="info">
+                            <i class="fa fa-compass"></i> {{ windDir(city.weather) | translate }}
+                        </div>
+                        <div class="info">
+                            <i class="fa fa-tint"></i> {{ ::city.weather.today.humidity }}%
+                        </div>
+                    </div>
+                </div>
+                <div class="forecast">
+                    <div ng-repeat="num in ::[0,1,2,3,4]" class="day">
+                        <div class="title">{{ ::getDayName(city.weather.days[num].date) }}</div>
+                        <img src="{{ weatherIcon(city.weather.days[num]) }}"/>
+                        <div class="temp">{{ ::city.weather.days[num].temperature }}&deg;</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+</div>

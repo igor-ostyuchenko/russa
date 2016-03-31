@@ -1,0 +1,65 @@
+<link rel="stylesheet" type="text/css" href="css/sheduler_section.css" />
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9XnuVclhRu4AfA0hLcr8_HFp4J6exYQI&callback=initMap"></script>
+
+<div id="sheduler_section">
+    <div class="top-menu">
+        <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+        <div class="title">
+        <span>
+             {{ maxLength(Section.name) || 'Загрузка...' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+    <div class="filters">
+        <div class="filter" ng-class="{'active': activeFilter == 'objects'}" ng-click="activeFilter = 'objects'">
+            {{ 'Объекты' | translate }}
+        </div>
+        <div class="filter" ng-class="{'active': activeFilter == 'map'}" ng-click="activeFilter = 'map'">
+            {{ 'На карте' | translate }}
+        </div>
+    </div>
+    <div class="selection objects" style="height: {{ getSelectionHeight()}}px;" ng-show="activeFilter == 'objects'">
+        <div class="item {{ item.type }}" ng-repeat="item in Section.data"
+             ng-class="{'active': item.active, 'removed': item.removed}"
+             ng-click="setActive(item)"
+             ng-swipe-right="touchEvent(item, $event)"
+             style="background-image: url('{{ item.data.img.url || '../img/msc.jpg'}}');">
+            <div class="datestamp" ng-if="item.type == 'event'">
+                {{ item.data.dateStr }}
+            </div>
+            <div class="paststamp" ng-if="item.type == 'event'" ng-show="item.data.past">
+                {{ 'Завершено' | translate }}
+            </div>
+
+            <div class="info-panel">
+                <div class="title">
+                    {{ ::item.data.name[lang] }}
+                </div>
+                <div class="mark" ng-class="{'favorite': checkFavorite(item)}">
+                    <i class="fa fa-heart-o"></i>
+                    {{ item.data.likes }}
+                </div>
+            </div>
+
+            <div class="remove" ng-click="removeItem(item, $event)">
+                <i class="fa fa-trash"></i>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="selection map" style="height: {{ getSelectionHeight()}}px;" ng-show="activeFilter == 'map'">
+        <div id="map_canvas" style="width:100%;height:100%" >
+
+        </div>
+        <script>
+            function initMap() {
+                $('body').scope().$broadcast('mapInit');
+            }
+        </script>
+
+    </div>
+</div>

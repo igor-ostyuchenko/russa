@@ -1,0 +1,28 @@
+<link rel="stylesheet" type="text/css" href="css/faq.css" />
+
+<div id="faq">
+    <div class="top-menu">
+        <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+        <div class="title">
+        <span>
+            {{ 'О приложении' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <div class="item item_{{ $index }}" ng-repeat="item in About track by $index" ng-class="{'unfolded': item.unfolded}">
+            <div class="title" ng-click="unfold(item, $index)">
+                <span>
+                    {{ item.name[lang] }}
+                </span>
+                <i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="content">
+                {{ item.answer[lang] }}
+            </div>
+        </div>
+    </div>
+
+</div>

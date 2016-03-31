@@ -1,0 +1,7 @@
+<div class="filter">
+  <form ng-submit="newSearch(query)">
+    <i class="fa fa-search"></i>
+    <input type="text" placeholder="{{ 'Поиск' | translate }}" ng-model="query"/>
+    <i class="fa fa-times" ng-click="query = ''; newSearch('');"></i>
+  </form>
+</div>

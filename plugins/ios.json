@@ -1,0 +1,71 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Screenshot\"><param name=\"ios-package\" value=\"Screenshot\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "framework": {
+                "parents": {
+                    "SystemConfiguration.framework": [
+                        {
+                            "xml": true,
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-calendar": {
+            "PACKAGE_NAME": "app.fbguide"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "app.fbguide"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "app.fbguide"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "app.fbguide"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "app.fbguide"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "app.fbguide"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "app.fbguide"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "app.fbguide"
+        },
+        "com.darktalker.cordova.screenshot": {
+            "PACKAGE_NAME": "app.fbguide"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "app.fbguide"
+        }
+    },
+    "dependent_plugins": {}
+}

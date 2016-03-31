@@ -1,0 +1,117 @@
+#about_app {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  text-shadow: none;
+  font-family: 'Open Sans';
+
+  //= top_menu.scss
+
+  .selection {
+    overflow-y: auto;
+    position: relative;
+
+    padding-bottom: 70px;
+    box-sizing: border-box;
+
+    .info {
+      display: block;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .address {
+      display: block;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .link {
+
+      display: block;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      min-height: 80px;
+
+      img {
+        float: left;
+        margin-right: 15px;
+      }
+    }
+
+    .contacts {
+      display: none;
+      width: 100%;
+      margin-bottom: 35px;
+      margin-top: 25px;
+
+      &.unfolded {
+        display: table;
+      }
+
+
+      .share {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        width: 25%;
+
+        &.fb .fa{
+          background: #3b5998;
+        }
+        &.tw  .fa{
+          background: #56a3d9;
+        }
+        &.gp  .fa{
+          background: #dd4b39;
+        }
+        &.vk  .fa{
+          background: #597DA3;
+        }
+
+        .btn {
+          display: block;
+
+          .fa {
+            display: inline-block;
+            font-size: 24px;
+            line-height: 32px;
+            width: 32px;
+            height: 32px;
+            padding: 15%;
+            border-radius: 100%;
+            color: white;
+          }
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+
+      }
+    }
+
+    .select-button {
+      background: #22c064;
+      color: white;
+      font-weight: 600;
+      position: fixed;
+      bottom:0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding-top:7%;
+      padding-bottom: 7%;
+      text-decoration: none;
+
+      &:hover{
+        background: #2ae880;
+      }
+    }
+
+  }
+
+}

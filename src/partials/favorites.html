@@ -1,0 +1,48 @@
+<link rel="stylesheet" type="text/css" href="css/favorites.css" />
+
+<div id="favorites">
+    <div class="top-menu">
+        <div class="backBtn" onclick="backBtnPressed()"><i class="fa fa-arrow-left"></i></div>
+        <div class="title">
+        <span>
+            {{ 'Избранное' | translate }}
+        </span>
+            <div class="burger-menu fa fa-bars" onclick="onMenuKeyDown()"></div>
+        </div>
+    </div>
+    <div class="filters">
+        <div class="filter" ng-class="{'active': activeFilter == 'objects'}" ng-click="activeFilter = 'objects'">
+            {{ 'Объекты' | translate }}
+        </div>
+        <div class="filter" ng-class="{'active': activeFilter == 'routes'}" ng-click="activeFilter = 'routes'">
+            {{ 'Маршруты' | translate }}
+        </div>
+        <div class="filter" ng-class="{'active': activeFilter == 'events'}" ng-click="activeFilter = 'events'">
+            {{ 'События' | translate }}
+        </div>
+    </div>
+    <div class="selection" style="height: {{ getSelectionHeight()}}px;">
+        <div class="item-container"
+             ng-class="{'out': item.out}"
+             ng-repeat="item in Favorites.objects"
+             ng-if="activeFilter == 'objects'">
+            <ng-include src="'partials/elements/selection_item.html'"
+                        ng-init="item.type='object'; item.active = false;"></ng-include>
+        </div>
+        <div class="item-container"
+             ng-class="{'out': item.out}"
+             ng-repeat="item in Favorites.routes"
+             ng-if="activeFilter == 'routes'">
+            <ng-include src="'partials/elements/selection_item.html'"
+                        ng-init="item.type='route'; item.active = false;"></ng-include>
+        </div>
+        <div class="item-container"
+             ng-class="{'out': item.out}"
+             ng-repeat="item in Favorites.events"
+             ng-if="activeFilter == 'events'">
+            <ng-include src="'partials/elements/selection_item.html'"
+                        ng-init="item.type='event'; item.active = false;"></ng-include>
+        </div>
+
+    </div>
+</div>

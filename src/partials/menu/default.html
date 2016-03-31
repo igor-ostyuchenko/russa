@@ -1,0 +1,26 @@
+<div class="system-menu" style="opacity: 0; width:{{ menuWidth }}px;"  ng-class="{'shown': menu.show}">
+    <div class="menu-content">
+        <div class="logo">
+            <img src="img/logo_side.png"/>
+        </div>
+
+
+        <ul class="pages">
+            <li ng-repeat="item in menu.items"
+                ng-class="{'active': item.active}"
+                ng-click="menuClick(item)">
+                {{ item.title[lang] }}
+            </li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <ul class="system">
+            <li ng-repeat="item in menu.sysItems"
+                ng-class="{'active': item.active}"
+                ng-click="menuClick(item)">
+                {{ item.title[lang] }}
+            </li>
+        </ul>
+    </div>
+</div>
